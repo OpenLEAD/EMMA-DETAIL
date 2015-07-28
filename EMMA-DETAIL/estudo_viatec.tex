@@ -11,5 +11,20 @@ estejam de acordo com as restrições impostas pelo ambiente e o acesso. Desssa
 forma, diversos fabricantes de manipuladores, Motoman, Kuka, ABB, Fanuc,
 Adept e Kinova, foram avaliados e suas principais características como carga,
 peso, dimensões, velocidade, temperatura e umidade de operação, são analisadas.
+A pesquisa de mercado tem como objetivo retornar o objeto para os outros
+estudos, ou seja, o manipulador a ser utilizado na solução.
+
+O estudo puramente geométrico, apesar de ser diferente para cada acesso, é
+genericamente uma abordagem simplificada e analítica do problema e desconsidera
+alguns fatores do ambiente. O estudo geométrico tem como objetivo retornar um caso
+aproximado da situação real e estimar as possíveis soluções da posição do
+manipulador em relação à pá, de forma que toda ela seja revestida.
+
+O estudo do espaço de trabalho e cinemática do manipulador é uma abordagem
+detalhada e simulada. Ela considera: o meio estruturado em um ambiente de
+simulação; o manipulador com suas dimensões e limites de juntas reais;
+possibilidade de colisões; real espaço de trabalho do manipulador; modelos de
+bases para o manipulador; e possiveis sensores. Para a simulação é utilizada a
+plataforma Openrave \citep{diankov2008openrave}. 
 
 \input{estudo_viatec_bighatch}
