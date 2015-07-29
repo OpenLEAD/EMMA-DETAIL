@@ -20,11 +20,16 @@ alguns fatores do ambiente. O estudo geométrico tem como objetivo retornar um c
 aproximado da situação real e estimar as possíveis soluções da posição do
 manipulador em relação à pá, de forma que toda ela seja revestida.
 
-O estudo do espaço de trabalho e cinemática do manipulador é uma abordagem
-detalhada e simulada. Ela considera: o meio estruturado em um ambiente de
+O espaço de trabalho e cinemática do manipulador é uma abordagem
+detalhada e simulada. Ela considera: o meio estruturado, em um ambiente de
 simulação; o manipulador com suas dimensões e limites de juntas reais;
 possibilidade de colisões; real espaço de trabalho do manipulador; modelos de
 bases para o manipulador; e possiveis sensores. Para a simulação é utilizada a
-plataforma Openrave \citep{diankov2008openrave}. 
+plataforma Openrave, uma arquitetura de planejamento para robôs autônomos,
+sendo possivelmente integrada para controle em tempo real e monitoramento.
+Ela provê funcionalidades para operações de cinemática direta e inversa, e
+simulações físicas, e apresenta ferramentas e interfaces para planejamento de
+manipuladores e um protocolo que interpreta scripts na linguagem MatLab, Octave
+e Python \citep{diankov2008openrave}.
 
 \input{estudo_viatec_bighatch}
