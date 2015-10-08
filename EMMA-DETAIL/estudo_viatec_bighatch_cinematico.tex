@@ -1,6 +1,7 @@
-\subsubsection{Espaço de trabalho e cinemática do manipulador}
-Como já mencionado, o ambiente de simulação foi desenvolvido utilizando a
-arquitetura de planejamento Openrave. Para cada manipulador selecionado após a
+\subsubsection{Espaço de trabalho e cinemática do
+manipulador}\label{sec::cinematica} 
+Como já mencionado, o ambiente de simulação
+foi desenvolvido utilizando a arquitetura de planejamento Openrave. Para cada manipulador selecionado após a
 pesquisa de mercado, serão analisados os reais espaços de trabalho, e o processo de
 revestimento da pá em um ambiente simulado que representa as principais
 caracterísiticas do ambiente real.
@@ -217,7 +218,7 @@ respectivas normais, de forma que pertençam à superfície da pá,
 ponto $D$ é deslocado até ponto $C$ na figura~\ref{fig::tolerancia1}. Para cada
 ponto não revestido, são gerados dois vetores unitários $\overrightarrow{v}$ e
 $\overrightarrow{w}$ ortogonais entre si e ao vetor normal $\overrightarrow{N}$,
-no plano tangente à superfície da pá conforme
+no plano tangente à superfície da pá, conforme
 ilustrado na figura~\ref{fig::tolerancia2}. O vetor $\overrightarrow{N}$ é
 girado pelo ângulo de tolerância de revestimento $\theta$ (entre $0^o$ e $60^o$)
 em relação ao vetor $\overrightarrow{w}$, gerando o vetor
