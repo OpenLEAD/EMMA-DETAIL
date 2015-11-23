@@ -2,8 +2,8 @@
 
 O processo de metalização utilizado atualmente considera que a posição e
 orientação da pá é fixa em relação ao robô e, uma vez, que corretamente
-posiciona, o processo é executado em malha aberta. Entretanto, para qualquer uma
-das soluções propostas por esse documento, não é possível assumir que nem a
+posicionado, o processo é executado em malha aberta. Entretanto, para qualquer
+uma das soluções propostas por esse documento, não é possível assumir que nem a
 posição nem a orientação do manipulador, em relação a pá a ser processada, se
 manterão fixas.
 
@@ -19,7 +19,7 @@ na reconstrução do modelo do perfil hidráulico da pá, tanto do perfil ideal
 quanto do estado atual da pá a ser processada (Tarefas descritas em
 \ref{sec::introducao}).
 
-Esta seção irá apresentar os segmentos de sensores capazes de suprir essa
+Esta seção irá apresentar os segmentos de sensores que possam suprir essa
 necessidade, assim como suas vantagens e limitações. 
 
 
@@ -29,30 +29,85 @@ necessidade, assim como suas vantagens e limitações.
 geralmente em aplicações de metrologia, construção civil, monitoramento de
 deformações, entre outras. O equipamento consiste em um feixe de laser que é
 direcionado por meio de um espelho e a partir da mudança de fase do sinal
-refletido é possível calcular a distância até o objeto atingido.
+refletido é possível calcular a distância até o objeto atingido. O seu preço
+esta na faixa de U\$70.000,00.
 
-\paragraph{FARO Focus3D X330}
+\paragraph{Estações de medição}
+
+Esse tipo de sensor funciona a partir de um único feixe laser que é direcionado
+por um espelho giratório acoplado a um motor de passo de alta resolução. O
+sensor possui também uma base giratória, realizando assim um escaneamento de
+$360^o$ do ambiente. Graças a sua construção, esse tipo de sensor possui uma
+alta densidade de pontos e resolução, porém sua taxa de atualização não é muito
+alta.
 
 \begin{itemize}
-  \item Campo de visão (vertical/horizontal): $300^o$ / $360^o$
-  \item Tamanho do passo (vertical/horizontal): $0,009^o$ (40.960 3D-Pixel em
-  $360^o$)
-  \item Velocidade máx. de varredura vertical: 5.820 rpm ou 97 Hz
-  \item Precisão: $\pm$2mm
-  \item Peso: 5,2 kg
-  \item Tamanho: 240 x 200 x 100 mm
-  \item Vida da bateria: 4,5 horas
-  \item Temperatura ambiente: $5^o$ - $40^o$ C
+  \item \item \textbf{Faro Focus X 330}
+  	\begin{itemize}
+  		\item Campo de visão (vertical/horizontal): $300^o$ / $360^o$
+  		\item Alcance: 330m
+  		\item Velocidade máx. de escaneamento: 976.000pts/s
+  		\item Precisão: $\pm$2mm
+  		\item Peso: 5,2 kg
+  		\item Tamanho: 240 x 200 x 100 mm
+  		\item Vida da bateria: 4,5 horas
+  		\item Temperatura ambiente: $5^o$ - $40^o$ C
+  		\item Preço: U\$70.000,00
+	\end{itemize}
+  \item \textbf{Leica P16}
+  	\begin{itemize}
+  		\item Campo de visão (vertical/horizontal): $270^o$ / $360^o$
+  		\item Alcance: 40m
+  		\item Velocidade máx. de escaneamento: 1.000.000pts/s
+  		\item Precisão: $\pm$3mm
+  		\item Peso: 12,25 kg
+  		\item Tamanho: 238 x 358 x 395 mm
+  		\item Vida da bateria: 5,5 horas
+  		\item Temperatura ambiente: $-20^o$ - $50^o$ C
+  		\item Preço: U\$80.000,00
+	\end{itemize}
+   \item \textbf{Nikon MV330}
+  	\begin{itemize}
+  		\item Campo de visão (vertical/horizontal): $45^o$ / $360^o$
+  		\item Alcance: 30m
+  		\item Velocidade máx. de escaneamento: 2000pts/s
+  		\item Precisão: $\pm$0.5mm
+  		\item Peso: \textit{não informado}
+  		\item Tamanho: \textit{não informado}
+  		\item Vida da bateria: \textit{não informado}
+  		\item Temperatura ambiente: \textit{não informado}
+  		\item Preço: U\$355.000,00
+	\end{itemize}
+
+
 \end{itemize}
-%TODO LEMBERAR QUE EXISTE LASER TRIANGULATION TAMBÉM!
+
+
+\begin{figure*}
+\begin{subfigure}{0.49\columnwidth}
+\includegraphics[height=3cm,width=\columnwidth]{figs/3dsensors/faro}
+\caption{text for the first subfigure}
+\label{sfig:testa}
+\end{subfigure}\hfill
+\begin{subfigure}{0.49\columnwidth}
+\includegraphics[height=3cm,width=\columnwidth]{figs/3dsensors/faro}
+\caption{test for the second subfigure}
+\label{sfig:testb}
+\end{subfigure}\hfill
+\caption{}
+\label{}
+\end{figure*}
+
+%TODO acertar figura
 
 \paragraph{Velodyne}
 
 A empresa Velodyne possui, atualmente, 3 modelos de 3D Lidar. Os modelos variam
 basicamente no número de pares de emissores e receptores e, consequentemente, na
-resolução final. Os modelos são o VLP-15, o HDL-32E e HDL-64E, com 16,32 e 64
-canais respectivamente. O modelo mais utilizado é o intermediário HDL-32E, que
-tem um preço na faixa de U\$30k.
+resolução final. Os modelos são o VLP-16, o HDL-32E e HDL-64E, com 16,32 e 64
+canais respectivamente. Esse tipo de sensor possui uma alta taxa de
+atualização, entretanto não possui uma alta densidade de dados. O modelo mais
+utilizado é o intermediário HDL-32E.
 
 \begin{itemize}
 \item 32 pares laser/detector  
@@ -80,7 +135,8 @@ tem um preço na faixa de U\$30k.
 
 
 O sensor Forecast 3D consiste em um senor 2D laser da SICK, modelo LMS 151 ou
-511, acoplado a uma unidade $pan-tilt$. O seu preço esta na faixa de U\$37k.
+511, acoplado a uma unidade $pan-tilt$. O seu preço esta na faixa de
+U\$37.000,00.
 
 
 \begin{figure}[h!]
@@ -90,11 +146,17 @@ O sensor Forecast 3D consiste em um senor 2D laser da SICK, modelo LMS 151 ou
    \label{fig::forecast}
 \end{figure}
 
-%TODO exemplos dos sensores de 3D scanners
-%TODO Pros e cons
+\subsubsection{ToF Cameras}
 
+As conhecidas como Time-of-Flight são dispositivos compostos por apenas uma
+câmera, não necessitando de uma configuração stereo para triangularização de
+imagens. Esse tipo de dispositivo utiliza uma fonte infra-vermelho interna e de
+forma análoga aos dispositivos laser, calcula a distância a partir da diferença
+de fase do sinal refletido. Entretanto, essa tecnologia possibilita o cálculo
+simultâneo das distâncias de cada objeto na região iluminada pela fonte IR,
+mesmo que com resoluções limitadas.
 
-\subsection{Mesa Imaging SwissRanger SR4000}
+\paragraph{Mesa Imaging SwissRanger SR4000}
 
 
 \begin{itemize}
@@ -112,24 +174,6 @@ O sensor Forecast 3D consiste em um senor 2D laser da SICK, modelo LMS 151 ou
    \caption{Mesa Imaging SwissRanger SR4000}
    \label{fig::mesa}
 \end{figure}
-%TODO exemplos dos sensores de ToF
-
-Essa tecnologia tem como vantagem o tamanho relativamente compacto dos sensores,
-não precisa de calibração extrínseca e também não é muito sensivel a iluminação
-presente no ambiente, pois possui fonte de iluminação própria.
-
-%TODO Pros e cons
-
-\subsubsection{ToF Cameras}
-
-As conhecidas como Time-of-Flight são dispositivos compostos por apenas uma
-câmera, não necessitando de uma configuração stereo para triangularização de
-imagens. Esse tipo de dispositivo utiliza uma fonte infra-vermelho interna e de
-forma análoga aos dispositivos laser, calcula a distância a partir da diferença
-de fase do sinal refletido. Entretanto, essa tecnologia possibilita o cálculo
-simultâneo das distâncias de cada objeto na região iluminada pela fonte IR,
-mesmo que com resoluções limitadas.
-
 
 \paragraph{Sentis M100 / Argos 3D - P100}
 
@@ -180,3 +224,76 @@ padrão é possível o cálculo de distâncias.
 %\caption{Dados principais do processo de metalização HVOF}
 \label{tab::estructvstof}
 \end{center}
+
+\subsection{Conclusão}
+
+As restrições apresentadas pelo problema de calibração, dentro do ambiente da
+turbina, impõem um conjunto de requisitos mínimos que o sensor deve apresentar:
+
+\begin{itemize}
+  \item Alta resolução
+  \item Portabilidade
+  \item Alcance suficiente (>20m)
+  \item Resistir as condições de temperatura e umidade 
+\end{itemize}
+
+Além desses requisitos, é desejável também que o sensor tenha alimentação
+idependente e que sua velocidade de escaneamento não seja um fator limitante
+para a eficiência do processo.
+
+A classe de sensores que atende todas essas condições é a das Estações de
+medição, com exceção do sensor Nikon MV 330 que não possui a portabilidade
+necessária para a solução proposta, além de ter um preço muito maior que de seus
+concorrentes.
+
+O sensor Faro Focus X330, além de satisfazer os requisitos mínimos, é o que
+possui menor preço e, por isso, foi escolhido como o o sensor a ser utilizado na
+calibração do sistema e reponsável por colher os dados espacias do ambiente da
+turbina e do robô. 
+
+Entretanto, pelas especificações do sistema não foi possível garantir a perfeita
+operação do sensor nas condições de alta umidade apresentada no interior da
+turbina. O dipositivo opera com um sistema de lentes e lasers e, caso apresente
+condensação em um desses componentes, o resultado final de sensoriamento pode
+ser prejudicado. Devido a este fato, foi realizado uma bateria de testes na
+Usina de Jirau, no interior de uma turbina, afim de confirmar a viabilidade
+técnica desse sensor.
+
+O teste realizado constituiu na utlização de quatro esferas reflexivas,
+representadas na figura \ref{fig::esferas}, distribuidas pelo ambiente da
+turbina.
+Em seguida, foram realizadas 4 coletas de dados, sendo 3 delas à jusante do
+rotor e uma entre as pás do rotor e o distribuidor. Com a nuvem de pontos
+coletada, foi possível utilizar a assinatura única gerada pelas esferas para
+alinhar todos os conjuntos de dados em uma única imagem 3D.
+
+\begin{figure}[h!]
+\centering
+	\includegraphics[width=0.9\columnwidth]{figs/3dsensors/kit}
+	\caption{Conjunto de esferas reflexivas e tripé}
+	\label{fig::esferas}
+\end{figure}
+
+A figura \ref{fig::turbina_faro} representa a vista frontal da imagem gerada e, por sua
+vez, a figura \ref{fig::turbina_cad} representa uma reconstrução 3D gerada a
+partir da nuvem de pontos coletas e utilizando o software proprietário do
+fornecedor do sensor. 
+
+\begin{figure}[h!]
+\centering
+	\includegraphics[width=0.9\columnwidth]{figs/3dsensors/recorte_video}
+	\caption{Vista frontal da imagem gerada a partir dados adquiridos durante o
+	teste.}
+	\label{fig::turbina_faro}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+	\includegraphics[width=0.9\columnwidth]{figs/3dsensors/Pa_Real_Render_04}
+	\caption{Reconstrução em CAD da pá com os dados do teste.}
+	\label{fig::turbina_cad}
+\end{figure}
+
+A partir dos resultados gerados durante os testes foi comprovada que o sensor é
+capaz de operar nas condições extremas impostas pela turbina e com um nível de
+ruído aceitável para a aplicação em questão. 

@@ -3,6 +3,8 @@
 \usepackage[table,xcdraw]{xcolor}
 \usepackage{pdfpages}
 \usepackage{graphicx}      % include this line if your document contains figures
+\usepackage{subcaption}
+\usepackage[caption=false]{subfig}
 \usepackage{natbib}        % required for bibliography
 \usepackage{enumerate}
 \usepackage[utf8]{inputenc}
@@ -23,6 +25,10 @@
       {\rule{\widthof{$#2$}}{.57pt}\kern.4pt}{O}{r}{F}{F}{L}\kern-\shlength$}}%
       {O}{c}{F}{T}{S}}
 \sloppy  
+
+
+\captionsetup[subfigure]{labelformat=brace}
+
 
 \begin{document}
 
