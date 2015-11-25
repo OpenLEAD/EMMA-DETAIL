@@ -3,9 +3,9 @@ O estudo de viabilidade técnica detalhada é realizado para cada acesso à turb
 (superior e inferior), como em EMMA-SOTA. O estudo passa pelas
 seguintes etapas: 1) pesquisa de mercado; 2) geometria plana e/ou espacial; 3)
 espaço de trabalho e cinemática do manipulador; 4) detalhamento de
-bases mecânicas; 5) dinâmica do manipulador; 6) planejamento de trajetórias; 7)
-sensores para calibração; e 8) técnicas de calibração.
-Neste documento, serão abordadas as etapas: 1, 2, 3, 4 e 7.
+bases mecânicas; 5) dinâmica do manipulador; 6) sensores para calibração; 7)
+planejamento de trajetórias; e 8) técnicas de calibração.
+Neste documento, serão abordadas as etapas: 1, 2, 3, 4, 5 e 6.
 
 A pesquisa de mercado é uma busca abrangente de soluções comerciais dentro do
 escopo da solução conceitual desenvolvida no EMMA-SOTA. A pesquisa envolve
@@ -24,7 +24,7 @@ aproximado da situação real e estimar as possíveis soluções da posição do
 manipulador em relação à pá, de forma que toda ela seja revestida.
 
 O espaço de trabalho e cinemática do manipulador é uma abordagem
-detalhada e simulada. Ela considera: o meio estruturado, em um ambiente de
+detalhada e de simulação. Ela considera: o meio estruturado, em um ambiente de
 simulação; o manipulador com suas dimensões e limites de juntas reais;
 possibilidade de colisões; real espaço de trabalho do manipulador; modelos de
 bases para o manipulador; e possiveis sensores. Para a simulação é utilizada a
@@ -34,5 +34,12 @@ Ela provê funcionalidades para operações de cinemática direta e inversa, e
 simulações físicas, e apresenta ferramentas e interfaces para planejamento de
 manipuladores e um protocolo que interpreta scripts na linguagem MatLab, Octave
 e Python \citep{diankov2008openrave}.
+
+Na seção de estudo da dinâmica de manipuladores robóticos, serão realizadas
+análises numéricas e analíticas, em um ambiente de simulação, de cinemática
+diferencial e torques das juntas de manipuladores, utilizando as características
+do processo de revestimento. O estudo tem por objetivo tornar a simulação mais
+realista, analisar a execução do processo para algumas distâncias da pá
+e verificar a manipulabilidade do robô.
 
 \input{estudo_viatec_bighatch}
