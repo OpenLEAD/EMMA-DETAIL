@@ -1,14 +1,26 @@
 \subsection{Estudo de técnicas de reconhecimento} 
 
-A informação recebida dos sensore descritos na sessão anterior são
-biunivocamente transformáveis em uma nuvem de pontos. Onde essa nuvem de pontos
-é não classificada, no sentido que não podemos dizer \textit{à priori} a qual
-corpo (eg. pá ou robô) se refere determinado ponto da nuvem.
+As informações de distância recebidas pelos sensores descritos na seção
+anterior podem ser armazenados como uma estrutura de dados chamada nuvem de
+pontos, isto é, uma representação tridimensional do espaço cartesiano, na qual cada distância medida pelos
+sensores a partir de sua origem representa uma coordenada x y z.
+Entretanto, essa representação não é capaz de diferenciar, ou classificar, os
+limites de cada objeto presente na cena, ou seja, não é possível determinar
+\textit{a priori} qual conjunto de pontos pertence a cada elemento que se deseja
+identificar para a realização da calibração.
 
-Para o calculo a transformação entre o robô e a pá se faz, então, necessária a
-identificação de ambos os objetos. Quando importar também a posição do robô no
-ambiente, a fim, por exemplo, de evitar colisões, mais algum objeto do ambiente
-deve ser reconhecido.
+A identificação de cada conjunto, ou \textit{cluster}, de pontos é importante
+para que a posição e orientação de cada objeto de interesse seja determinada e,
+assim a transformação do sistema de coordenadas entre cada objeto seja
+calculada. Esse processo necessita, então, do estudo e implementação de
+algoritmos para a análise da nuvem de pontos, identificação dos elementos
+necessários, extração de suas respectivas posições e, finalmente, cálculo da
+transformação entre as posições. 
+
+Dependendo das características de cada objeto a ser identificado e da
+possibilidade de implementação de uma estrutura de apoio para facilitar a sua
+identificação, podem ser utilizados diferentes métodos e estratégias de
+identificação e localização, que serão exploradas a seguir.
 
 \subsubsection{Reconhecimento da Pá} 
 
