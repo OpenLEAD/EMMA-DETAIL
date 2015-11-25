@@ -27,3 +27,16 @@ main.pdf
 *.fls
 *.bcf
 *.pyg
+/Descricao.aux
+/Introduction.aux
+/Localizacao.aux
+/apendice.aux
+/conclusao.aux
+/estudo_viatec.aux
+/mai.synctex.gz
+/main.aux
+/main.bbl
+/main.blg
+/main.log
+/main.pdf
+/main.synctex.gz
