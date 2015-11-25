@@ -24,5 +24,72 @@ identificação e localização, que serão exploradas a seguir.
 
 \subsubsection{Reconhecimento da Pá} 
 
+Para a identificação e localização das pás das turbinas não é possível a
+utilização de algum artifício de apoio que facilite o processamento da nuvem de
+pontos, pois a instalação de qualquer um desses aparatos não pode ter a precisão
+garantida nas operações de campo. Uma instalação em pontos precisos
+da pá necessitaria também de calibração para cada utilização, retirando assim
+o propósito do método. 
+
+Portanto, para a localização das pás da turbina é
+necessário explorar as características espaciais intrínsecas à superfície do
+próprio objeto e identificá-las na nuvem de pontos do ambiente. O objetivo
+principal nessa etapa do processo é identificar um conjunto mínimo de
+características do objeto que represente unicamente o mesmo, com um baixo grau
+de ambiguidade e sem exigir muito esforço computacional. 
+
+A escolha do tipo de característica usar é uma decisão fundamental para a
+eficiência do processo e tem sido alvo de estudos na literatura para a análise
+e reconhecimentos de imagens 2D, como imagens RGB de câmeras e mais recentemente
+também para imagens 3D. 
+
+Uma boa representação de point feature deve ser capaz de capturar as mesmas
+características locais da superfície na presença de:
+
+\begin{itemize}
+  \item Transformadas -  I.e, rotações e translações 3D nos dados não devem influenciar a estimação dos descriptors;
+  \item Variações na densidade de amostragem - em princípio, uma de superfície
+  amostrada mais ou menos densamente deve ter a mesma assinatura característica do vetor
+  \item Ruído
+\end{itemize}
+
+3D haar features Pang2013
+
+spin-image detectors - Rodgers2006
+
+3d vs 2d Zaharia2004
+
+superquadratic Biegelbauer2010
+
+Range image - SIFT Bayramoglu2010
+			  Local Feature Histograms  Hetzel2001
+			  NARF Steder2010 Steder2009
+			  Local surface patches Chen2007
+			  
+Intergral Image e raycasting Nuchter2005
+
+Hough Voting - Tombari2010a
+			  
+			  
+
+Compact Covariance Descriptors in 3D Point  Fehr2012
+
+COMPARISON OF 3D INTEREST POINT DETECTORS  Weber2014
+
+
+
+
+Reconhecimento de objetos
+
+Oznabruck
+
+Narf
+
+Descriptors
+
+Correspondence Grouping
+
+
+
 
 \subsubsection{Reconhecimento do Robô}
