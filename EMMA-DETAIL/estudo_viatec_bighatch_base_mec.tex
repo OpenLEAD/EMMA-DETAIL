@@ -1,7 +1,4 @@
 \subsubsection{Detalhamento da Base Mecânica}\label{sec::base_mec}
-%TODO Estevão: descrever sistemas de fixação e ancoragem
-%TODO Estevão: adicionar subseção de sistema de içamento e entrada dos
-% equipamentos 
 %TODO Estevão: adicionar subseção do shutter
 O estudo da base mecânica investigou primeiramente alguns conceitos baseados nos
 graus de liberadade necessários para fornecer à base do robô todos os
@@ -113,20 +110,21 @@ $\bullet$~\textbf{Base Prismática-Rotacional-Prismática (P-R-P):}
   movimentar nos graus de liberdade da base, sem alterar o posicionamento do
   rotor e, assim, cobrir uma face inteira da pá. Para a repetição do processo
   nas outras pás do lado da sucção da turbina, é necessária a desmontagem do
-  trilho secundário, o recuo do robô e desmontagem de parte do trilho primário.
+  trilho secundário, o recuo do robô e desmontagem de parte do trilho primário,
+  permitindo o giro do rotor para a pá seguinte.
   Para as faces do lado de adução, não é necessária a desmontagem parcial do
   trilho primário.
   
-  \subsubsection{Sistemas de elevação, fixação e ancoragem}
-  A entrada de pessoal através da escotilha é feita por uma escada vertical com
-  guarda-corpo com uma altura total de $5~m$. Equipamentos de segurança como
-  cinto e talabarte devem ser usados para qualquer um que deseja entrar no
-  ambiente confinado da turbina, através da escada e isso impossibilita o
-  transporte manual dos equipamentos. Por este motivo, deve ser instalada uma
-  estrutura com talha que permita a elevação até o interior da turbina e
-  movimentação para a áera de montagem adequada. As figuras~\ref{fig::talha} e
-  \ref{fig::talha_trilho} ilustram a estrutura de elevação com talha e carro
-  trole. 
+\subsubsection{Sistemas de elevação, fixação e ancoragem}
+A entrada de pessoal através da escotilha é feita por uma escada vertical com
+guarda-corpo com uma altura total de $5~m$. Equipamentos de segurança como
+cinto e talabarte devem ser usados para qualquer um que deseja entrar no
+ambiente confinado da turbina, através da escada e isso impossibilita o
+transporte manual dos equipamentos. Por este motivo, deve ser instalada uma
+estrutura com talha que permita a elevação até o interior da turbina e
+movimentação para a áera de montagem adequada. As figuras~\ref{fig::talha} e
+\ref{fig::talha_trilho} ilustram a estrutura de elevação com talha e carro
+trole. 
   
 \begin{figure}[h!]
    \centering
@@ -142,20 +140,75 @@ $\bullet$~\textbf{Base Prismática-Rotacional-Prismática (P-R-P):}
    \label{fig::talha_trilho}
 \end{figure}
 
-  Devido aos esforços dinâmicos de operação do robô, a fixação da estutura da
-  base mecânica no ambiente deve ser dimensionado com cuidado. Por se
-  tratar de uma ambiente de escoamento de fluido sob pressão, não são admitidas
-  modificações permanentes de infra-estrutura no interior da turbina, logo,
-  qualquer método de fixação utlizado deve ser removível, sem causar nenhum dano
-  à qualquer superfície. Em visita técnica realizada em Outrubro de $2015$ foi
-  testada a viabilidade de utlização de bases magnéticas para o sistema de
-  ancoragem e fixação. Este teste teve o objetivo de verificar a real carga limite de tração
-  do imã, considerando o ambiente (geometria), materiais e acabamentos
-  superficiais reais a que estará submetido na solução final. O resultado
-  detalhado do teste encontra-se no
-  %TODO Estevão: incluir ref do Anexo%
-  Outra opção para fixação provisória seria a soldagem da estrutura na
-  superfície do túnel. Esta opção segue como uma alternativa ainda para regiões
-  de difícil fixação da base magnética.
+Devido aos esforços dinâmicos de operação do robô, a fixação da estutura da
+base mecânica no ambiente deve ser dimensionado com cuidado. Por se
+tratar de uma ambiente de escoamento de fluido sob pressão, não são admitidas
+modificações permanentes de infra-estrutura no interior da turbina, logo,
+qualquer método de fixação utlizado deve ser removível, sem causar nenhum dano
+à qualquer superfície. Em visita técnica realizada em Outrubro de $2015$ foi
+testada a viabilidade de utlização de bases magnéticas para o sistema de
+ancoragem e fixação. Este teste teve o objetivo de verificar a real carga limite de tração
+do imã, considerando o ambiente (geometria), materiais e acabamentos
+superficiais reais a que estará submetido na solução final. O resultado
+detalhado do teste encontra-se no
+%TODO Estevão: incluir ref do Anexo%
+Outra opção para fixação provisória seria a soldagem da estrutura na
+superfície do túnel. Esta opção segue como uma alternativa ainda para regiões
+de difícil fixação da base magnética.
   
-  
+\subsubsection{Shutter}%TODO mudar o nome do sistema de desvio do fluxo de
+% revestimento
+O processo de revestimento HVOF (\textit{High Velocity Oxygen Fuel}) requer
+velocidade da pistola controlada de $40~m/min$. Esta velocidade é essencial para
+a qualidade do processo e deve ser mantida constante para se obter uma camada 
+regular de material ao longo de toda a superfície da peça. Na solução
+pesquisada demonstou-se ser inviável utilizar um robô de grande porte, devido a
+limitação de acesso e ao confinamento do manipulador no ambiente. Portanto, o
+manipulador  escolhido realizará o processo em regiões delimitadas da
+superfície da peça e na trajetória haverá inevitavelmente mudanças de direção e
+portanto acelerações que irão variar a velocidade da pistola. Durante essas
+variações não deve-se injetar o material na peça, sendo necessário um mecanismo
+autônomo para impedir o processo nestes intervalos.
+
+A ideia inicialmente estudada foi de uma barreira ao fluxo na saída da pistola. 
+A figura~\ref{fig::shutter_todos} ilustra a ideia para dois conceitos nas
+configurações aberta e fechada. 
+Nestes conceitos, uma barreira é movimentada automaticamente sempre que houver
+mudança de direção da pistola, impedindo que o fluxo de material atinja a
+pistola. 
+
+\begin{figure}[h!]
+   \centering
+   \includegraphics[width=0.8\columnwidth]{figs/shutter/shutter_todos}
+   \caption{Conceitos de Shutter avaliados}
+   \label{fig::shutter_todos}
+\end{figure}
+
+Algumas considerações foram levantadas para avaliar a viabilidade
+desta solução, como a alta temperatura da chama, a capacidade do atuador, a
+resistência mecânica da barreira e a taxa de acúmulo de material. Este conceito
+foi abandonado principalmente devido ao acúmulo de material na barreira, o que
+levaria a um aumento de seu peso e por consequência momento de inércia,
+alterando a dinâmica prevista ou ainda poderia chegar a obstruir a saída da
+chama, causando danos à pistola.
+
+Outra proposta que está sendo estudada é a de modificar o fluxo da linha de
+revestimento. A ideia é a inclusão de uma válvula direcional com atuação por
+solenóide para desviar o fluxo do material de revestimento para um tanque ou
+cilindro de retorno. Esta atuação deve ser programada junto com a trajetória do 
+manipulador. A válvula seria de três vias e duas posições ($3/2$) tal que, no 
+repouso, o fluxo estaria direcionado diretamente para a pistola e, quando
+atuada, bloqueia-se o fluxo para a pistola e abre-se o fluxo para exaustão. Uma
+válvula limitadora de pressão regulável seria utilizada na linha de exaustão
+para igualar as diferenças de pressão entre as duas vias, minimizando efeitos transitórios.
+A figura~\ref{fig::circuito_hvof} apresenta o circuito do processo HVOF de forma
+simplificada.
+A linha tracejada representa o circuito original, as linhas em vermelho
+representam a modificação do circuito com os equipamentos adicionais indicados.
+
+ \begin{figure}[h!]
+   \centering
+   \includegraphics[width=0.8\columnwidth]{figs/shutter/Circuito_HVOF_mod}
+   \caption{Circuito do processo HVOF modificado}
+   \label{fig::circuito_hvof}
+\end{figure}
