@@ -61,12 +61,12 @@ velocidades das juntas e $G$ o vetor de gravidade.
 
 Para a formação da matriz $M$, é necessária a estimação de parâmetros do
 manipulador. A estimação dos parâmetros pode ser realizada de maneira iterativa,
-quando há o manipulador se aplicam torques nas juntas e, pela resposta do
-manipulador, estima-se a matriz; ou pelo CAD do manipulador, pela utilização da
-ferramenta SolidWorks. Foi utilizado o método de estimação pelo CAD do
+isto é, aplicam-se torques nas juntas e, pela resposta
+do manipulador, estima-se a matriz \citep{slotine1988adaptive}; ou pelo CAD do
+manipulador, por exemplo, pela utilização da ferramenta SolidWorks. Foi utilizado o método de estimação pelo CAD do
 manipulador, visto que os manipuladores ainda estavam em estudo e não foram
 adquiridos, além disso houve facilidade de aproximar os parâmetros já que o CAD
-é bem detalhado. %REFERENCIA
+fornecido pelo fabricante é bem detalhado. 
 
 A aceleração angular, $\alpha$, é necessária para a computação dos torques,
 $\tau$. O método analítico para cálculo da aceleração angular das juntas é
@@ -74,7 +74,7 @@ através da derivada da equação da cinemática diferencial:
 $\ddot{X}=\dot{q}^TH\dot{q}+J\ddot{q} \Rightarrow
 \ddot{q}=J^+(\ddot{X}-\dot{q}^TH\dot{q})$ ou
 $\alpha=J^+(a-\omega^TH\omega)$, onde $H$ é a matriz Hessiana, isto é, derivada
-parcial da matriz jacobiana $J$. %REFERENCIA
+parcial da matriz jacobiana $J$ \citep{hourtash2005kinematic}. 
 
 Com a informação dos ângulos, velocidades e acelerações das juntas, momentos
 de inércia e massa dos elos, o OpenRave calcula a dinâmica inversa através do
@@ -89,4 +89,33 @@ estabelecidos pelo datasheet:
 $\tau_{\textbf{max}}=\{-,-,-,22,22,9.8\}\textbf{Nm}$, logo se $\exists \tau\in
 T$, tal que $\tau\leq\tau_{\textbf{max}}$, então há uma trajetória viável.
 
-A análise dinâmica do manipulador MH12 mostrou que 
+As figuras~\ref{fig::wgeo}, ~\ref{fig::wcin} e ~\ref{fig::wdin} representam a
+evolução das análises do manipulador, de um nível mais simples a um nível mais
+complexo de detalhamento, o qual avalia velocidades, acelerações e torques das
+juntas do manipulador. Ainda deverá ser executada a análise de manipulabilidade
+que avalia o sistema de controle do manipulador. Esta análise é importante para
+o planejamento de trajetórias do manipulador e para o cálculo das posições
+viáveis da base para uma operação completa.
+
+
+
+\begin{figure}[h!]	
+	\includegraphics[width=\columnwidth]{figs/dinamica/workspaceGeometrico.png}
+	\caption{Área em verde representa a cobertura do revestimento executada pelo
+	manipulador, utilizando a abordagem puramente geométrica.}
+	\label{fig::wgeo}
+\end{figure}
+
+\begin{figure}[h!]	
+	\includegraphics[width=\columnwidth]{figs/dinamica/workspaceCinematica.png}
+	\caption{Área em verde representa a cobertura do revestimento executada pelo
+	manipulador, utilizando a abordagem puramente cinemática.}
+	\label{fig::wcin}
+\end{figure}
+
+\begin{figure}[h!]	
+	\includegraphics[width=\columnwidth]{figs/dinamica/workspaceTorques.png}
+	\caption{Área em verde representa a cobertura do revestimento executada pelo
+	manipulador, utilizando a abordagem dinâmica.}
+	\label{fig::wdin}
+\end{figure}
