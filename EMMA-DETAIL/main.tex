@@ -31,7 +31,8 @@
       {\rule{\widthof{$#2$}}{.57pt}\kern.4pt}{O}{r}{F}{F}{L}\kern-\shlength$}}%
       {O}{c}{F}{T}{S}}
 \sloppy      
-
+\newcommand{\specialcell}[2][c]{%
+  \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
 
 
 \begin{document}

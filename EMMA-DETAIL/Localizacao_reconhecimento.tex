@@ -43,15 +43,34 @@ do robô não ocasionam problemas para o funcionamento do sistema.
 \begin{figure}[h!]
    \centering
    \includegraphics[width=0.95\columnwidth]{figs/localizacao/checkerboard_rec}
-   \caption{Exemplo de padrão de xadrez utilizado para renhecimento. Fonte:
+   \caption{Exemplo de padrão de xadrez utilizado para renhecimento.\\ Fonte:
    http://stereomorph.blogspot.com.br/}
    \label{fig::checkerboard_rec}
 \end{figure}
 
 
-Devido a baixa iluminação ambiente dentro do circuito da tubina, a opção
-mais simples é o uso de nuvem de pontos sem identificação de cor. Ou seja, o
-reconhecimento se dará apenas pelo formato 
+Devido a baixa iluminação ambiente dentro do circui\-to da tubina, a opção
+mais simples é o uso de nu\-vem de pontos sem identificação de cor. Ou seja, o
+reconhecimento se dará apenas pelo formato. Isso restringe o uso de padrões de
+xadrez e focaremos, então, no uso do formato geométrico mais simples de certa
+forma: a esfera.
+
+O reconhecimento de formas geométricas simples em três dimensões é um assunto
+já razoavelmente explorado na literatura. Dentre eles pode-se destacar 2
+métodos: RANSAC e Hough Transform.
+
+O método RANSAC (acrônimo para ``RANdom SAmple Consensus", \textit{consenso por
+amostragem aleatória} em tradução livre) é um método iterativo que tem como
+premissa a presença de \textit{outliers} (elementos fora do corpo principal) na
+amostra e objetiva a identificação dos parâmetros matemáticos que descrevem o
+objeto geométrico em questão \cite{ransac}. É o método disponível na amplamente
+utilizada biblioteca de processamento de nuvem de pontos ``PCL''. Esse método
+consite na seleção aleatória de pontos para serem considerados como partes
+integrantes do corpo principal ( no caso, uma esfera), a partir desses os
+parâmetros da esfera são calculados e os demais pontos são julgados como fazendo
+parte ou não da esfera de acordo com esses parâmetros. O modelo é julgado como
+bem estimado se uma quantidade razoável de pontos são avaliados como
+pertencentes a esse. Se for 
 
 
 \subsubsection{Reconhecimento da Pá} 
@@ -162,5 +181,3 @@ Correspondence Grouping
 
 
 
-
-\subsubsection{Reconhecimento do Robô}
