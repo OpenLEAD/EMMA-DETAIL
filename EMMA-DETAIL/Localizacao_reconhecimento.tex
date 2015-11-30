@@ -7,7 +7,7 @@ sensores a partir de sua origem representa uma coordenada x y z.
 Entretanto, essa representação não é capaz de diferenciar, ou classificar, os
 limites de cada objeto presente na cena, ou seja, não é possível determinar
 \textit{a priori} qual conjunto de pontos pertence a cada elemento que se deseja
-identificar para a realização da calibração.
+identificar para realizar a calibração.
 
 A identificação de cada conjunto, ou \textit{cluster}, de pontos é importante
 para que a posição e orientação de cada objeto de interesse seja determinada e,
@@ -52,8 +52,8 @@ do robô não ocasionam problemas para o funcionamento do sistema.
 Devido a baixa iluminação ambiente dentro do circui\-to da tubina, a opção
 mais simples é o uso de nu\-vem de pontos sem identificação de cor. Ou seja, o
 reconhecimento se dará apenas pelo formato. Isso restringe o uso de padrões de
-xadrez e focaremos, então, no uso do formato geométrico mais simples de certa
-forma: a esfera.
+xadrez e o foco se voltará, então, para o uso de formatos geométricos. Em
+especial o mais simples objeto de três dimensões: a esfera.
 
 O reconhecimento de formas geométricas simples em três dimensões é um assunto
 já razoavelmente explorado na literatura. Dentre eles pode-se destacar 2
@@ -102,12 +102,15 @@ O método consiste em tranformar cada ponto do espaço 3D em uma variedade
 mergulhada no espaço quadridimensional dos parâmetros da esfera ( x, y e z do
 centro mais r do raio). A variedade se identifica com todas as possiveis esferas
 que contém aquele ponto. O espaço de parâmetros é então restrito dentro de
-certos limites e quantizado por razões de implementação (os recursos computacionais são finitos). É definido então um acumulador, basicamente uma função que conta
-quantas variedade interceptam determinada região discretizada do espaço de
-parâmetros. Um algorítmo de reconhecimento de picos é então utilizado para
-detectar qual o conjunto de parâmetros que está melhor descrevendo um maior
-número de pontos. O algorítmo pode ser utilizado para reconhecer mais de um
-pico e, assim, identificar a presença de mais de uma esfera na nuvem de pontos.
+certos limites e quantizado por razões de implementação (os recursos
+computacionais são finitos). É definido então um acumulador, basicamente uma
+função que conta quantas variedade interceptam determinada região discretizada
+do espaço de parâmetros. Um algorítmo de reconhecimento de picos é aplicado
+sobre o espaço de parâmetros (com as varidade já mergulhadas nele) para detectar
+qual o conjunto de parâmetros que está melhor descrevendo um maior número de
+pontos. O algorítmo pode ser utilizado para reconhecer mais de um pico e, assim,
+identificar a presença de mais de uma esfera na nuvem de pontos (exemplo na
+figura \ref{fig::hough}).
 
 A dificuldade no uso do método é seu custo computacional, mas existem soluções
 que exploram amostragens estatísticas para reduzir o custo computacional.
@@ -121,7 +124,7 @@ que exploram amostragens estatísticas para reduzir o custo computacional.
    (mergulhadas em um espaço paramétrico bidimensional). Os pontos mais
    brilhantes refletem os picos referentes aos parâmetros que melhor descrevem as duas retas. (Fonte: 
    \url{https://en.wikipedia.org/wiki/Hough_transform})}
-   \label{fig::ransac}
+   \label{fig::hough}
 \end{figure}
 
 Tendo conhecimento da posição de quatro esferas, pelo uso de um dos métodos
