@@ -59,19 +59,78 @@ O reconhecimento de formas geométricas simples em três dimensões é um assunt
 já razoavelmente explorado na literatura. Dentre eles pode-se destacar 2
 métodos: RANSAC e Hough Transform.
 
+\paragraph{RANSAC}
 O método RANSAC (acrônimo para ``RANdom SAmple Consensus", \textit{consenso por
 amostragem aleatória} em tradução livre) é um método iterativo que tem como
 premissa a presença de \textit{outliers} (elementos fora do corpo principal) na
 amostra e objetiva a identificação dos parâmetros matemáticos que descrevem o
-objeto geométrico em questão \cite{ransac}. É o método disponível na amplamente
-utilizada biblioteca de processamento de nuvem de pontos ``PCL''. Esse método
-consite na seleção aleatória de pontos para serem considerados como partes
-integrantes do corpo principal ( no caso, uma esfera), a partir desses os
-parâmetros da esfera são calculados e os demais pontos são julgados como fazendo
-parte ou não da esfera de acordo com esses parâmetros. O modelo é julgado como
-bem estimado se uma quantidade razoável de pontos são avaliados como
-pertencentes a esse. Se for 
+objeto geométrico em questão \cite{ransac}. É o método
+disponível na amplamente utilizada biblioteca de processamento de nuvem de pontos ``PCL''. 
 
+Esse método consiste na seleção aleatória de pontos para serem considerados como
+partes integrantes do corpo principal (no caso, uma esfera), a partir desses os
+parâmetros da esfera são calculados (comumente, os valores x, y e z do centro
+da esfera e seu raio). Então os demais pontos são julgados como fazendo parte ou
+não da esfera de acordo com esses parâmetros. O modelo é avaliado como bem estimado se uma quantidade razoável de pontos são considerados
+como pertencentes à esfera. Se for visto como bem estimado, os parâmetros são
+então reestimado levando em conta de todos os pontos que foram considerados como
+pertencentes à esfera. O erro do modelo é inferido a partir dos pontos que foram
+considerados como fazendo parte da esfera e uma esfera reconstruída pelos
+parâmetros calculados. O processo então é repetido um número artrário de vezes,
+e se mantém armazenado o modelo que obteve menor erro.
+
+Um dos principais pontos negativos do RANSAC é que ele tem como premissa a
+presença de apenas um corpo principal, ou seja, apenas uma esfera. Isso implica
+em um tratamento especial quando temos mais de uma esfera no ambiente.
+
+\begin{figure}[h!]
+   \centering
+   \includegraphics[width=0.95\columnwidth]{figs/localizacao/ransac}
+   \caption{Exemplo de reconhecimento de uma linha em 2 dimensões usando
+   RANSAC. (Fonte: \cite{ransac})}
+   \label{fig::ransac}
+\end{figure}
+ 
+ \paragraph{Transformada de Hough 3D}
+Anos de pesquisa em reconhecimento de objetos geométricos de duas dimensões
+levaram ao desenvolvimento e aprimoramento de técnicas basedas em ``Transformada
+de Hough''. Essas técnicas tem sido recentemente adaptadas para o universo de
+três dimensões (ver \cite{hough2014}) e adequadamente chamadas de Transformada
+de Hough 3D.
+
+O método consiste em tranformar cada ponto do espaço 3D em uma variedade
+mergulhada no espaço quadridimensional dos parâmetros da esfera ( x, y e z do
+centro mais r do raio). A variedade se identifica com todas as possiveis esferas
+que contém aquele ponto. O espaço de parâmetros é então restrito dentro de
+certos limites e quantizado por razões de implementação (os recursos computacionais são finitos). É definido então um acumulador, basicamente uma função que conta
+quantas variedade interceptam determinada região discretizada do espaço de
+parâmetros. Um algorítmo de reconhecimento de picos é então utilizado para
+detectar qual o conjunto de parâmetros que está melhor descrevendo um maior
+número de pontos. O algorítmo pode ser utilizado para reconhecer mais de um
+pico e, assim, identificar a presença de mais de uma esfera na nuvem de pontos.
+
+A dificuldade no uso do método é seu custo computacional, mas existem soluções
+que exploram amostragens estatísticas para reduzir o custo computacional.
+
+\begin{figure}[h!]
+   \centering
+   \includegraphics[width=0.95\columnwidth]{figs/localizacao/hough}
+   \caption{Exemplo de reconhecimento de duas linhas em 2 dimensões usando
+   Transformada de Hough. Na esquerda estão pontos que compõem as duas retas, na
+   direita uma sobreposição das variedades referentes a cada ponto das retas
+   (mergulhadas em um espaço paramétrico bidimensional). Os pontos mais
+   brilhantes refletem os picos referentes aos parâmetros que melhor descrevem as duas retas. (Fonte: 
+   https://en.wikipedia.org/wiki/Hough_transform)}
+   \label{fig::ransac}
+\end{figure}
+
+Tendo conhecimento da posição de quatro esferas, pelo uso de um dos métodos
+descritos acima, é possivel unicamente identificar a posição de um corpo preso a
+elas. Em outras palavras, consegue-se a transformada entre origem do sistema de
+coordenadas (tipicamente no sensor) e o robô. Para descobrir a trasnformada
+entre o robô e a pá (posição relativa entre eles) falta identificar a
+transformada entre a origem e a pá, esse caso será explorado na próxima seção a
+seguir.
 
 \subsubsection{Reconhecimento da Pá} 
 
