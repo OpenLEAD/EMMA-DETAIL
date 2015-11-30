@@ -76,7 +76,7 @@ pertencentes a esse. Se for
 \subsubsection{Reconhecimento da Pá} 
 
 Para a identificação e localização das pás das turbinas não é possível a
-utilização de algum artifício de apoio que facilite o processamento da nuvem de
+utilização de nenhum artifício de apoio que facilite o processamento da nuvem de
 pontos, pois a instalação de qualquer um desses aparatos não pode ter precisão
 garantida nas operações de campo. Uma instalação de um elemento de apoio em
 pontos precisos da pá necessitaria também de calibração para cada utilização, retirando assim
@@ -86,12 +86,12 @@ Portanto, para a localização das pás da turbina é
 necessário explorar as características espaciais intrínsecas à superfície do
 próprio objeto e identificá-las na nuvem de pontos do ambiente. O objetivo
 principal nessa etapa do processo é, então, identificar um conjunto mínimo de
-características do objeto que represente unicamente o mesmo, com um baixo grau
+características do objeto que o represente unicamente com um baixo grau
 de ambiguidade e sem exigir muito esforço computacional. 
 
 A escolha do tipo de característica a se usar é uma decisão fundamental para a
 eficiência do processo e tem sido alvo de estudos na literatura para a análise
-e reconhecimentos de imagens 2D, como imagens RGB de câmeras e mais recentemente
+e reconhecimento de imagens 2D, como imagens RGB de câmeras e mais recentemente
 também para imagens 3D. 
 
 Uma boa representação de \textit{point feature} deve ser capaz de capturar as
@@ -105,7 +105,7 @@ mesmas características locais da superfície na presença de:
   \item \textbf{Ruído}
 \end{itemize}
 
-Na literatura, o reconhecimento de objetos em aplicações robóticas vem recebido
+O reconhecimento de objetos em aplicações robóticas também vem recebido
 grande atenção, principamente com o crescimento da robótica móvel e em ambientes
 não estruturados, onde é necessário identificar e localizar os objetos a serem
 manipulados em cada tarefa. O problema é enfrentado basicamente utilizando-se
@@ -113,39 +113,44 @@ duas abordagens: analisar os dados 3D ou realizar algum tipo de processamento e
 projeção para se trabalhar com imagens 2D e utilizar as técnicas mais maduras
 desse tipo de imagem.
 
-Nesta última categoria, a técnica de projeção
-mais usada é converter as informações tridimensionais em \textit{Range Images},
-na qual é realizada uma projeção a partir de um ponto de vista (geralmente o do sensor) e utiliza escala
+Nesta última categoria, a técnica
+mais usada consiste em converter as informações tridimensionais em \textit{Range
+Images}, na qual é realizada uma projeção a partir de um ponto de vista (geralmente o do sensor) e utiliza escala
 de cores ou cinza para representar a distância, ou seja, quanto mais escuro o
 objeto na imagem, mais longe ele se encontra. É importante reassaltar que esse
 tipo de método introduz perdas de informação ao se realizar projeções e é
-sensível à escolha do ponto de vista escolhido. Em \cite{Bayramoglu2010} são
-utilizados descritores SIFT, ou \textit{Scale-Invariant Feature Transform},  
-como características a serem identificadas na imagem. \textit{Local Feature
-Histograms} são utilizados em \cite{Hetzel2001} e por sua vez \cite{Chen2007}
-optou por utilizar \textit{Local surface patches}. A escolha do descritor a ser
+sensível à escolha do ponto de vista escolhido. 
+%Em \cite{Bayramoglu2010} são
+%utilizados descritores SIFT, ou \textit{Scale-Invariant Feature Transform},  
+%como características a serem identificadas na imagem. \textit{Local Feature
+%Histograms} são utilizados em \cite{Hetzel2001} e por sua vez \cite{Chen2007}
+%optou por utilizar \textit{Local surface patches}. 
+A escolha do descritor a ser
 utilizado depende da aplicação e deve ser estudada a melhor opção para a nossa
-solução, assim que tivermos dados aquisitados pelo sensor. Uma comparação dos
-descritores utilizados para reconhecimento de objetos 2D e 3D pode ser
-encontrado em \cite{Zaharia2004, Weber2014}.
+solução, assim que tivermos dados aquisitados pelo sensor. Aplicações
+semelhantes envolvendo identificação de objetos no ambiente tridimensional, mas
+sem localizá-los, e utilizando diferentes descritores podem ser encotradas em
+\cite{Bayramoglu2010,Hetzel2001,Chen2007}. Uma comparação dos descritores
+utilizados para reconhecimento de objetos 2D e 3D pode ser encontrado em \cite{Zaharia2004, Weber2014}.
 
-Após o reconhecimento do objeto, é necessário identificar a posição do mesmo. Em
-\cite{Steder2009}, o alinhamento é realizado utilizando-se a própria
+Após o reconhecimento do objeto, é necessário identificar a sua posição.
+Em \cite{Steder2009}, o alinhamento é realizado utilizando-se a própria
 \textit{Range Image} e a informação de profundidade presente na mesma. Por outro
 lado, em \cite{Nuchter2005} a região onde o objeto identificado está presente é
-selecionada e, por meio de \textit{raycasting}, o conjunto de pontos da nuvem
-pertecentes a essa região é identificado. Após essa segmentação, é utilizado um
-algoritmo de alinhamento como o ICP.
+selecionada e, por meio de \textit{raycasting} o conjunto de pontos da nuvem
+pertecentes à região identificada na \textit{Range Image} é reprojetado. Após
+essa segmentação, é utilizado um algoritmo de alinhamento como o ICP.
 
-O primeiro passo para ser possível localizar a pá é a aquisição de seus dados
-espacias e a criação de uma nuvem de dados que represente a pá. A figura
-\ref{fig::pa_pcd} ilustra uma nuvem de pontos representando uma pá de uma das
+O primeiro passo para tornar possível a localização da pá é a aquisição de seus
+dados espacias e a criação de uma nuvem de pontos que a represente. A
+figura \ref{fig::pa_pcd} ilustra uma nuvem de pontos representando uma pá de uma das
 turbinas da usina de Jirau, esse modelo foi construído utilizando-se os dados
 aquisitados durante a viagem de campo e teste de sensibilidade do sensor Faro
-Focus X330 à umidade. É importante ressaltar que o modelo deve representar, se
-possível, todas as características pertinentes do objeto de interesse. Nesse
+Focus X330, como citado anteriormente. É importante ressaltar que o
+modelo deve representar, se possível, todas as características pertinentes do objeto de interesse. Nesse
 sentido, se faz necessário a criação de um modelo para cada tipo de pá que
-deverá ser processada. 
+deverá ser processada, ou seja pás com diferentes perfis hidráulicos possuem
+modelos diferentes.
 
 
 \begin{figure}[h!]
@@ -156,28 +161,47 @@ deverá ser processada.
 \end{figure}
 
 A partir do modelo, é necessário a extração de seus pontos chaves e descritores.
-A figura \ref{fig::pa_key} ilustra descritores do tipo SHOT, (explicação),
-identificados no modelo de referência da pá. Para a nossa aplicação, não é
+A figura \ref{fig::pa_key} ilustra descritores do tipo SHOT, identificados no modelo de referência da pá. Para a nossa aplicação, não é
 necessário, a princípio, o reconhecimento do objeto em questão, apenas a sua
 localização e orientação no espaço tridimensional. A possibilidade de inserir no
-sistema a informação de qual modelo de pá o sistema deve procurar, simplifica o
-algoritmo e o torna menos suscetível a erros, uma vez o sistema não precisa
-avaliar qual o modelo mais próximo das medições atuais e pode ainda nos
-fornecer uma medida de avalição de quão bom está a similaridade do modelo com
-os dados reais.
+sistema a informação de qual modelo de pá deve ser procurado, simplifica o
+algoritmo e o torna menos suscetível a erros, uma vez que não é necessário
+avaliar qual o modelo mais próximo das medições atuais e ainda é possível 
+utilizar essa informação para fornecer uma avalição da similaridade do modelo
+com os dados reais aquisitados.
 
 \begin{figure}[h!]
    \centering
    \includegraphics[width=0.95\columnwidth]{figs/localizacao/pa_key}
-   \caption{Modelo da pá em nuvem de pontos}
+   \caption{Pontos de interesses com descritores associados no modelo da pá}
    \label{fig::pa_key}
 \end{figure}
 
+Uma vez que os pontos de interesse do modelo e seus descritores são extraídos, é
+possível armazená-los para evitar o seu processamento  durante cada nova
+calibração. Utilizando-se a estratérgia de
+\textit{Correspondence Grouping} e o algoritmo \textit{Hough Voting}
+\cite{Tombari2010a}, a nuvem de pontos aquisitada em campo terá também seus
+pontos de interesse extraídos e um descritor associado para cada ponto. A
+seguir, os descritores de ambas as nuvens, cena e modelo, são comparados afim de
+se encontrar correpondentes em cada conjunto. Se um número suficiente de
+correspondências é encontrado, o objeto é então detectado e localizado na
+imagem. É importante ressaltar que essa técnica pode gerar falsos positivos. A
+figura \ref{fig::correspondence} ilustra a implementação do algoritmo com 
+dados sintéticos de uma cena, utilizando-se porém o modelo real da pá. O modelo
+da pá está representado em amarelo, a pá identificada na cena em vermelho e as correspondências
+conectadas pelas setas verdes.
+Como próximos passos é necessário a utilização de dados reais para validação do
+algoritmo e também a utilização de diferentes descritores, uma vez que apenas os
+descritores do tipo SHOT foram testados.
 
-Hough Voting - Tombari2010a
-			  
-			  
-Correspondence Grouping
+\begin{figure}[h!]
+   \centering
+   \includegraphics[width=0.99\columnwidth]{figs/localizacao/correspondence}
+   \caption{Identificação e localização de uma pá utilizando
+   \textit{Correspondence Grouping}}
+   \label{fig::correspondence}
+\end{figure}
 
 
 
