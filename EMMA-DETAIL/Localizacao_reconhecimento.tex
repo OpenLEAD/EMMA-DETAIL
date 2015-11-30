@@ -141,26 +141,42 @@ A figura \ref{fig::pa_key} ilustra descritores do tipo SHOT, (explicação),
 identificados no modelo de referência da pá. Para a nossa aplicação, não é
 necessário, a princípio, o reconhecimento do objeto em questão, apenas a sua
 localização e orientação no espaço tridimensional. A possibilidade de inserir no
-sistema a informação de qual modelo de pá o sistema deve procurar, simplifica o
-algoritmo e o torna menos suscetível a erros, uma vez o sistema não precisa
-avaliar qual o modelo mais próximo das medições atuais e pode ainda nos
-fornecer uma medida de avalição de quão bom está a similaridade do modelo com
-os dados reais.
+sistema a informação de qual modelo de pá deve ser procurado, simplifica o
+algoritmo e o torna menos suscetível a erros, uma vez que não é necessário
+avaliar qual o modelo mais próximo das medições atuais e ainda é possível nos
+utilizar essa informação para fornecer uma medida de avalição de quão bom está a
+similaridade do modelo com os dados reais.
 
 \begin{figure}[h!]
    \centering
    \includegraphics[width=0.95\columnwidth]{figs/localizacao/pa_key}
-   \caption{Modelo da pá em nuvem de pontos}
+   \caption{Pontos de interesses com descritores associados no modelo da pá}
    \label{fig::pa_key}
 \end{figure}
 
+Uma vez que os pontos de interesse do modelo e seus descritores são extraídos, é
+possível armazená-los para evitar o seu processamento  durante o processamento
+de uma nova nuvem de pontos. Utilizando-se a estratérgia de
+\textit{Correspondence Grouping} e o algoritmo \textit{Hough Voting}
+\cite{Tombari2010a}, a nuvem de pontos aquisitada em campo terá também seus
+pontos de interesse extraídos e um descritor associado para cada ponto. A
+seguir, os descritores de ambas as nuvens, cena e modelo, são comparados afim de
+se encontrar correpondentes em cada conjunto. Se um número suficiente de
+correspondências é encontrado, o objeto é então detectado e localizado na
+imagem. É importante ressaltar que essa técnica pode gerar falsos positivos. A
+figura \ref{fig::correspondence} ilustra a implementação do algoritmo com os
+dados sintéticos de uma cena, utilizando-se porém o modelo real da pá, na qual
+o modelo da pá está representado em amarelo, a pá identificada na cena em
+vermelho e as correspondências conectadas pelas setas verdes.
+Como próximos passos é necessário a utilização de dados reais para validação do
+algoritmo e também a utilização de diferentes descritores, uma vez que apenas os
+descritores do tipo SHOT foram testados.
 
-Hough Voting - Tombari2010a
-			  
-			  
-Correspondence Grouping
+\begin{figure}[h!]
+   \centering
+   \includegraphics[width=0.99\columnwidth]{figs/localizacao/correspondence}
+   \caption{Identificação e localização de uma pá utilizando
+   \textit{Correspondence Grouping}}
+   \label{fig::correspondence}
+\end{figure}
 
-
-
-
-\subsubsection{Reconhecimento do Robô}
