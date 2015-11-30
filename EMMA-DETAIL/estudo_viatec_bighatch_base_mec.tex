@@ -5,24 +5,31 @@ principal da base, que estruturam o ambiente para a montagem, movimentação e
 funcionamento seguros do robô. Os elementos de transporte oferecem ao
 manipulador graus de liberdade que permitem que este se posicione com facilidade
 nos pontos ótimos para o processo. Estes elementos podem ser trilhos, atuadores
-lineares, mancais de rolamento, atuadores rotativos, etc. Os elementos de
+lineares, mancais de rolamento, atuadores rotativos, etc. Já os elementos de
 ancoragem são necessários para fixar o robô e a estrutura no ambiente. As
-opções de ancoragem estudadas foram as bases magnéticas e solda, sendo a
-primeira opção de preferência pois há menor risco de danificar o ambiente. As
-etapas de detalhamento da base mecânica seguem a seguinte ordem: $1)$ investigação dos
-graus de liberdade necessários; $2)$ configuração conceitual da base em função
-dos graus de liberdade; $3)$ escolha do melhor conceito; $4)$ escolha e
-dimensionamento dos elementos mecânicos que compõem a base; $5)$ testes.
+opções de ancoragem estudadas foram as bases magnéticas e solda. A
+primeira opção, bases magnéticas, é de preferência pois não danifica o ambiente
+e não necessita de outros equipamentos para montagem. No caso da solda,
+seriam necesários um soldador capacitado e os equipamentos de soldagem no interior do
+ambiente confinado, quando a opção da base magnética não requer equipamentos
+extras.
+
+As etapas de detalhamento da base mecânica seguem a seguinte ordem: $1)$
+investigação dos graus de liberdade necessários; $2)$ configuração conceitual 
+da base em função dos graus de liberdade; $3)$ escolha do melhor conceito; $4)$ 
+escolha e dimensionamento dos elementos mecânicos que compõem a base; $5)$ testes.
 Avaliamos até esta etapa do projeto os itens: $1$,$2$ e $3$.
 
 Os graus de liberdade são fornecidos através de combinações de juntas
 prismáticas e rotacionais, que no nosso caso irão permitir o movimento do robô
-desde a escotilha até o ponto de interesse para o início do processo de
-revestimento e entre as etapas de em cada região da pá.
+desde a escotilha inferior até o ponto de interesse, tanto para o início do
+processo de revestimento em uma região da peça, como para a movimentação de
+precisão para a região seguinte.
 Investigou-se primeiramente alguns conceitos baseados nos graus de liberadade 
 necessários para fornecer à base do robô todos os posicionamentos necessários, 
 de acordo com os estudos cinemáticos e dinâmicos descritos  nas
-seções~\ref{sec::cinematica} e \ref{sec::dinamica}.
+seções~\ref{sec::cinematica} e \ref{sec::dinamica}. Estes conceitos serão
+apresentados em detalhe na seção~\ref{sec::conceitos_base}.
 %TODO criar label para sec estudo dinamico
 
 A análise dos conceitos estudados permite então compara-los e definir o que
@@ -35,17 +42,10 @@ Deve-se atentar também ao caráter dinâmico dos esforços, que causam vibraç�
 que podem resultar em esforços e deslocamentos elevados.
 Assim, a fixação da estrutura da base no ambiente deve ser o mais rígida
 possível, superdimensionando os elementos de ancoragem e minimizando as folgas
-nos acoplamentos.
+nos acoplamentos. A próxima etapa do projeto é justamente dimensionar a
+estrutura mecânica a partir do conceito escolhido.
 
-A entrada dos componentes da base é uma tarefa trabalhosa, devido ao acesso
-limitado ao interior da turbina. O diâmetro de $800~mm$ da escotilha inferior
-limita o tamanho e geometria dos equipamentos. Além disso, estes componentes devem ser
-içados até a escotilha em uma altura de $5~m$ entre o piso no exterior do
-ambiente confinado e seu interior. Assim, a modularidade dos elementos que compõe a base
-é uma diretriz essencial a esse projeto. A facilidade de transporte, montagem e
-desmontagem da base mecânica causará um grande impacto na praticidade e
-agilidade de implementação da solução.
-
+\subsubsection{Conceitos de base mecânica}\label{sec::conceitos_base}
 A seguir apresenta-se os conceitos analisados, em relação aos graus de
 liberdade da base mecânica:
 
@@ -146,11 +146,23 @@ $\bullet$~\textbf{Base Prismática-Rotacional-Prismática (P-R-P):}
   Para as faces do lado de adução, não é necessária a desmontagem parcial do
   trilho primário.
   
-\subsection{Sistemas de elevação, fixação e ancoragem}
+\subsubsection{Sistemas de elevação, fixação e ancoragem}
+A entrada dos componentes da base mecânica é uma tarefa trabalhosa, devido ao
+acesso limitado ao interior da turbina. O diâmetro de $800~mm$ da escotilha
+inferior limita o tamanho e geometria dos equipamentos, fazendo com que estes
+tenham dimensões reduzidas.
+Estes componentes devem ser içados até a escotilha em uma altura de $5~m$ entre
+o piso no exterior do ambiente confinado e seu interior. Assim, a modularidade dos elementos que compõe a base
+é uma diretriz essencial a esse projeto. A estratégia então é ter-se pequenos módulos de componentes
+que poderão ser içados separadamente e acoplados entre si, até se obter a
+estrutura completa. 
+A facilidade de transporte, montagem e desmontagem da base mecânica causará um
+grande impacto na praticidade e agilidade de implementação da solução.
+
 A entrada de pessoal através da escotilha é feita por uma escada vertical com
-guarda-corpo com uma altura total de $5~m$. Equipamentos de segurança como
+guarda-corpo. Equipamentos de segurança como
 cinto e talabarte devem ser usados para qualquer um que deseja entrar no
-ambiente confinado da turbina, através da escada e isso impossibilita o
+ambiente confinado da turbina através da escada e isso impossibilita o
 transporte manual dos equipamentos. Por este motivo, deve ser instalada uma
 estrutura com talha que permita a elevação até o interior da turbina e
 movimentação para a áera de montagem adequada. As figuras~\ref{fig::talha} e
@@ -196,12 +208,13 @@ regular de material ao longo de toda a superfície da peça. Na solução
 pesquisada demonstou-se ser inviável utilizar um robô de grande porte, devido a
 limitação de acesso e ao confinamento do manipulador no ambiente. Portanto, o
 manipulador  escolhido realizará o processo em regiões delimitadas da
-superfície da peça e na trajetória haverá inevitavelmente mudanças de direção e
-portanto acelerações que irão variar a velocidade da pistola. Durante essas
-variações não deve-se injetar o material na peça, sendo necessário um mecanismo
+superfície da peça e, em sua trajetória, haverá inevitavelmente mudanças de
+direção, e portanto acelerações, que irão variar a velocidade da pistola.
+Durante essas variações não deve-se injetar o material na peça, sendo necessário um mecanismo
 autônomo para impedir o processo nestes intervalos.
 
-A ideia inicialmente estudada foi de uma barreira ao fluxo na saída da pistola. 
+A ideia inicialmente estudada foi de uma barreira (\textit{shutter}) ao fluxo na
+saída da pistola.
 A figura~\ref{fig::shutter_todos} ilustra a ideia para dois conceitos nas
 configurações aberta e fechada. 
 Nestes conceitos, uma barreira é movimentada automaticamente sempre que houver
@@ -211,7 +224,7 @@ pistola.
 \begin{figure}[h!]
    \centering
    \includegraphics[width=0.8\columnwidth]{figs/shutter/shutter_todos}
-   \caption{Conceitos de Shutter avaliados}
+   \caption{Conceitos de \textit{shutter} avaliados}
    \label{fig::shutter_todos}
 \end{figure}
 
@@ -219,19 +232,23 @@ Algumas considerações foram levantadas para avaliar a viabilidade
 desta solução, como a alta temperatura da chama, a capacidade do atuador, a
 resistência mecânica da barreira e a taxa de acúmulo de material. Este conceito
 foi abandonado principalmente devido ao acúmulo de material na barreira, o que
-levaria a um aumento de seu peso e por consequência momento de inércia,
-alterando a dinâmica prevista ou ainda poderia chegar a obstruir a saída da
-chama, causando danos à pistola.
+levaria a um aumento de seu peso, e por consequência momento de inércia,
+alterando a dinâmica prevista, ou ainda, poderia chegar a obstruir a saída da
+chama causando danos à pistola.
 
 Outra proposta que está sendo estudada é a de modificar o fluxo da linha de
 revestimento. A ideia é a inclusão de uma válvula direcional com atuação por
 solenóide para desviar o fluxo do material de revestimento para um tanque ou
-cilindro de retorno. Esta atuação deve ser autônoma assim como a
+cilindro de retorno. Esta atuação deve ser autônoma e coordenada com a
 trajetória do manipulador. A válvula seria de três vias e duas posições ($3/2$) tal que, no 
 repouso, direciona-se o fluxo diretamente para a pistola e, quando
 atuada, bloqueia-se o fluxo para a pistola e abre-se o fluxo para exaustão. Uma
 válvula limitadora de pressão regulável seria utilizada na linha de exaustão
-para igualar as diferenças de pressão entre as duas vias, minimizando efeitos transitórios.
+para igualar as diferenças de pressão entre as duas vias, minimizando efeitos
+transitórios.
+Outra característica opcional importante para redução dos efeitos transitórios,
+como pico de pressão, é a de sobreposição aberta, ou seja, o fluxo só seria
+fechado da posição inicial quando o movimento de troca estivesse completo. 
 A figura~\ref{fig::circuito_hvof} apresenta o circuito do processo HVOF de forma
 simplificada.
 
